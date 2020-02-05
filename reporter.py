@@ -27,6 +27,16 @@ grades = pandas.read_csv(csv_filepath)
 print("GRADES:", type(grades))
 #print(dir(grades))
 print(grades.tail())
-
 # grades["student_id"]
 # grades["final_grade"]
+
+# FIND AVG GRADE
+# stats["games"].max()
+grades_col = grades["final_grade"]
+print("GRADES COLUMN", type(grades_col))
+avg_grade = grades_col.mean()
+print("AVG GRADE:", avg_grade)
+
+# LOOP THROUGH ALL ROWS
+
+# use for loop
