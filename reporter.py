@@ -1,5 +1,6 @@
 # reporter.py
 
+import os
 import pandas
 
 def to_usd(my_price):
@@ -15,7 +16,12 @@ def to_usd(my_price):
 print("READING GRADEBOOK CSV FILE...")
 
 # if CSV file in same dir as this Python script:
-csv_filepath = "gradebook2.csv"
+# csv_filepath = "gradebook2.csv"
+
+# if CSV file in the data dir:
+# csv_filepath = "data/gradebook.csv"
+csv_filepath = os.path.join(os.path.dirname(__file__), "data", "gradebook.csv")
+print("FILEPATH:", os.path.abspath(csv_filepath))
 
 grades = pandas.read_csv(csv_filepath)
 print("GRADES:", type(grades))
