@@ -39,4 +39,7 @@ print("AVG GRADE:", avg_grade)
 
 # LOOP THROUGH ALL ROWS
 
-# use for loop
+for index, row in grades.iterrows():
+    print(index)
+    print(row["final_grade"])
+    print("----")
