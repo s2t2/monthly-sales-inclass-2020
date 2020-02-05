@@ -1,6 +1,7 @@
 # reporter.py
 
 import os
+import statistics
 import pandas
 
 def to_usd(my_price):
@@ -30,16 +31,34 @@ print(grades.tail())
 # grades["student_id"]
 # grades["final_grade"]
 
-# FIND AVG GRADE
-# stats["games"].max()
-grades_col = grades["final_grade"]
-print("GRADES COLUMN", type(grades_col))
-avg_grade = grades_col.mean()
-print("AVG GRADE:", avg_grade)
+# # FIND AVG GRADE
+# # stats["games"].max()
+# grades_col = grades["final_grade"]
+# print("GRADES COLUMN", type(grades_col))
+# avg_grade = grades_col.mean()
+# print("AVG GRADE:", avg_grade)
+#
+# # LOOP THROUGH ALL ROWS
+#
+# for index, row in grades.iterrows():
+#     print(index)
+#     print(row["final_grade"])
+#     print("----")
 
-# LOOP THROUGH ALL ROWS
 
-for index, row in grades.iterrows():
-    print(index)
-    print(row["final_grade"])
-    print("----")
+# ALTERNATIVE WAY THAT MINIMIZES OUR PANDAS USAGE
+
+print("---------------")
+
+# convert DataFrame object to list of dictionaries:
+grades_list = grades.to_dict("records")
+print(type(grades_list))
+print(type(grades_list[0]))
+print(grades_list)
+
+# use a list comprehension for mapping purposes:
+just_grades = [float(d["final_grade"]) for d in grades_list]
+print(type(just_grades))
+print(just_grades[0])
+
+print("AVG GRADE", statistics.mean(just_grades))
